@@ -1,0 +1,73 @@
+
+
+<!-- Header -->
+<header class="masthead">
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-heading text-uppercase">いまどうしてる？</div>
+
+
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <%= form_with(model: @tweet, local: true, url:confirm_tweets_path) do |form| %>
+          <p><%= form.text_area :content, :class=>"form-control" %></p>
+          <p><%= form.submit :"つぶやく" %></p>
+
+          <%= render 'error' %>
+        <% end %>
+
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+</header>
+
+
+<!-- twitter_list -->
+<section id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">みんなのつぶやき</h2>
+      </div>
+    </div>
+
+    <% if @list.count == 0 %>
+      <!-- ０件だったら、投稿無い旨表示する -->
+      <p>まだツイートがありません。新規につぶやいてください</p>
+
+    <% else %>
+      <div class="row">
+        <% @list.reverse_each do |list| %>
+          <div class="col-lg-12" style="border: inset 0px #ff0000;">
+            <ul>
+              <li>
+                    <h3><%= list.content %></h4>
+                    <p><i><%= list.created_at %></i></p>
+                    <div class="tweet-button-field">
+                      <%= link_to '編集', edit_tweet_path(list.id), class: 'btn btn-info' %> |
+                      <%= link_to '削除', list, method: :delete, data: { confirm: 'このつぶやきを削除しますか?' }, class: 'btn btn-danger' %>
+                    </div>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Contact form JavaScript -->
+<script src="js/jqBootstrapValidation.js"></script>
+<script src="js/contact_me.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/agency.min.js"></script>

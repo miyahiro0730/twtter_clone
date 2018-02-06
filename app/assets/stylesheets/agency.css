@@ -65,13 +65,13 @@ section h3.section-subheading {
 }
 
 .btn-primary {
-  background-color: #fed136;
-  border-color: #fed136;
+  background-color: #1da1f2;
+  border-color: #1da1f2;
 }
 
 .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
-  background-color: #fec810 !important;
-  border-color: #fec810 !important;
+  background-color: #1da1f2 !important;
+  border-color: #1da1f2 !important;
   color: white;
 }
 
@@ -136,8 +136,8 @@ img::-moz-selection {
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 15px;
+    padding-bottom: 60px;
     -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
     -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
     transition: padding-top 0.3s, padding-bottom 0.3s;
@@ -167,7 +167,7 @@ img::-moz-selection {
 header.masthead {
   text-align: center;
   color: white;
-  /*background-image: url("../assets/header-bg.jpg");*/
+  background-image: url("/assets/header-bg.jpg");
   background-color: #1da1f2;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -594,7 +594,7 @@ header.masthead .intro-text .intro-heading {
 
 section#contact {
   background-color: #212529;
-  background-image: url("../assets/map-image.png");
+  background-image: url("/assets/map-image.png");
   background-repeat: no-repeat;
   background-position: center;
 }

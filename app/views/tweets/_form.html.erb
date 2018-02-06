@@ -10,13 +10,13 @@
 
         <%= render 'error' %>
 
-        <p><%= form.submit "つぶやく" %></p>
+        <p><%= form.submit "つぶやく",:class=>"btn btn-primary" %></p>
 
       <% end %>
 
       <%= form_with(model:@tweet, url:tweets_path, local:true, method:'get') do |form| %>
         <%= form.hidden_field :content %>
-        <p><%= form.submit "戻る",name:'back' %></p>
+        <p><%= form.submit "戻る",name:'back',:class=>"btn btn-primary" %></p>
       <% end %>
     </div>
     <div class="col-lg-4"></div>

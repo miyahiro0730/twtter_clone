@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+  before_action:current_user_check, only:[:new, :edit, :destroy]
   before_action:set_tweet, only:[:edit, :update, :destroy]
   before_action:get_tweet_list, only:[:index, :confirm, :create]
 
@@ -68,6 +69,13 @@ class TweetsController < ApplicationController
 
   def get_tweet_list
     @list = Tweet.all
+  end
+
+  # ログインしていないのに入る
+  def current_user_check
+    if !current_user
+      redirect_to tweets_path, notice: 'ログインしていない'
+    end
   end
 
 end

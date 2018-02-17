@@ -1,0 +1,28 @@
+<!-- Header -->
+<header class="masthead">
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-heading text-uppercase">ログイン画面</div>
+
+        <%= form_with(scope: :session, url:sessions_path, local: true) do |f| %>
+
+          <table class="login-form" align="center">
+            <tr>
+              <td><%= f.label :email %></td>
+              <td><%= f.email_field :email %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :password %></td>
+              <td><%= f.password_field :password %></td>
+            </tr>
+          </table>
+
+          <br />
+
+          <%= f.submit "ログイン", :class=>"btn btn-primary" %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>

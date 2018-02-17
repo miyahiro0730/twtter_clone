@@ -99,10 +99,10 @@ img::-moz-selection {
 
 #mainNav {
   background-color: #212529;
+  font-size: 12px;
 }
 
 #mainNav .navbar-toggler {
-  font-size: 12px;
   right: 0;
   padding: 13px;
   text-transform: uppercase;
@@ -163,6 +163,7 @@ img::-moz-selection {
     padding: 12px 0;
   }
 }
+
 
 header.masthead {
   text-align: center;
@@ -615,6 +616,7 @@ section#contact .form-group textarea {
 
 section#contact .form-group input.form-control {
   height: auto;
+  width: 80%;
 }
 
 section#contact .form-group textarea.form-control {

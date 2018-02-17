@@ -4,20 +4,29 @@
 <header class="masthead">
   <div class="container">
     <div class="intro-text">
-      <div class="intro-heading text-uppercase">いまどうしてる？</div>
+      <% if logged_in? %>
+        <!-- ログインしている場合 -->
+
+        <div class="intro-heading text-uppercase">いまどうしてる？</div>
 
 
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <%= form_with(model: @tweet, local: true, url:confirm_tweets_path) do |form| %>
-          <p><%= form.text_area :content, :class=>"form-control" %></p>
-          <p><%= form.submit :"つぶやく", :class=>"btn btn-primary" %></p>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <%= form_with(model: @tweet, local: true, url:confirm_tweets_path) do |form| %>
+            <p><%= form.text_area :content, :class=>"form-control" %></p>
+            <p><%= form.submit :"つぶやく", :class=>"btn btn-primary" %></p>
 
-          <%= render 'error' %>
-        <% end %>
+            <%= render 'error' %>
+          <% end %>
+        </div>
+        <div class="col-lg-4"></div>
+      <% else %>
+        <!-- # ログインしていない場合 -->
+        <p class="intro-heading text-uppercase">ログインしてください</p>
+        <p class="col-lg-12"><%= link_to 'ログイン画面', new_session_path %></p>
 
-      </div>
-      <div class="col-lg-4"></div>
+      <% end %>
+
     </div>
   </div>
 </header>

@@ -5,6 +5,7 @@
     <div class="col-lg-4" style="text-align:center;">
       <%= form_with(model:@tweet, local:true) do |form| %>
         <%= form.hidden_field :content %>
+        <%= form.hidden_field :user_id, :value => current_user.id  %>
         <%= form.text_area :content, :class=>"form-control"  %>
         <br />
 

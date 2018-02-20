@@ -15,6 +15,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # お気に入り情報を取得
+    @favorites = current_user.favorites.where(user_id: @user.id)
   end
 
 private

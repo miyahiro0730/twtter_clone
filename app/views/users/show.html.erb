@@ -2,13 +2,55 @@
 <header class="masthead">
   <div class="container">
     <div class="intro-text">
-      <div class="intro-heading text-uppercase">ログイン画面</div>
+      <div class="intro-heading text-uppercase">ユーザー画面</div>
 
-        <p>ユーザー登録が完了しました。</p>
+        <p><%= @user.name %>さんのページです</p>
 
         <p><%= link_to 'ログイン画面へ進む', new_session_path %></p>
+
+        <p><%= link_to 'トップ画面へ進む', tweets_path %></p>
 
       </div>
     </div>
   </div>
 </header>
+
+
+<!-- favorite_list -->
+<section id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">お気に入りリスト</h2>
+      </div>
+
+      <% if @favorites.count == 0 %>
+        <!-- ０件だったら、投稿無い旨表示する -->
+        <p>まだお気に入りがありません。お気に入りを設定してください</p>
+
+      <% else %>
+
+        <% @favorites.reverse_each do |f| %>
+          <div class="col-lg-12" style="border: inset 0px #ff0000;">
+            <ul>
+              <li>
+                <h3><%= f.tweet.content %></h4>
+                <p><i><%= f.tweet.created_at %></i></p>
+
+                <!-- 自分のIDの場合のみ表示する -->
+                <% if !current_user.nil? && f.user_id == current_user.id %>
+                  <div class="tweet-button-field">
+                    <%= link_to '編集', edit_tweet_path(f.tweet.id), class: 'btn btn-info' %> |
+                    <%= link_to '削除', f.tweet, method: :delete, data: { confirm: 'このつぶやきを削除しますか?' }, class: 'btn btn-danger' %>
+                  </div>
+                <% end %>
+
+              </li>
+            </ul>
+          </div>
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -18,7 +18,7 @@
 
         <% if logged_in? %>
           <!-- ログインしている場合 -->
-          <div class="navbar-brand js-scroll-trigger col-lg-1"><%= current_user.name %>さん</div>
+          <div class="navbar-brand js-scroll-trigger col-lg-1"><%= link_to current_user.name, user_path(current_user.id) %> </div>
           <div class="navbar-brand js-scroll-trigger col-lg-1"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></div>
         <% else %>
           <!-- # ログインしていない場合 -->

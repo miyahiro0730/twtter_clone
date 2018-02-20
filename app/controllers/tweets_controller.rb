@@ -41,12 +41,10 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
 
     if @tweet.save
-      #つぶやき投稿 成功の場合
-      #一覧画面へリダイレクト
-      redirect_to tweets_path, notice:'新規のつぶやきが完了しました'
+      redirect_to tweets_path, notice: '新規のつぶやきが完了しました'
+
     else
-      #つぶやき投稿 失敗の場合
-      #トップ画面を再描画
+
       render confirm_tweets_path
     end
   end
@@ -56,11 +54,14 @@ class TweetsController < ApplicationController
     render:index if @tweet.invalid?
   end
 
+  # def show
+  #
+  # end
 
-  private
-  #ストロングパラメータ
+private
   def tweet_params
-    params.require(:tweet).permit(:content)
+    # raise
+    params.require(:tweet).permit(:content, :user_id)
   end
 
   def set_tweet

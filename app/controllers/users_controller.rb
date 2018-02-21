@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to user_path(@user.id)
+      redirect_to tweets_path
     else
       render 'new'
     end
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
     # お気に入り情報を取得
     @favorites = current_user.favorites.where(user_id: @user.id)
   end

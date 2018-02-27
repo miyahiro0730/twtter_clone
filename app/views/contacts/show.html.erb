@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>名前:</strong>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <strong>メールアドレス:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <strong>送信内容:</strong>
+  <%= @contact.content %>
+</p>
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

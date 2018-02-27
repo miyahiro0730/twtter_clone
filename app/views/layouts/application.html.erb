@@ -14,7 +14,7 @@
     <header class="navigation">
       <nav class="navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="navbar-brand js-scroll-trigger col-lg-2"><%= link_to 'Twitter-Clone', tweets_path %></div>
-        <div class="col-lg-8"></div>
+        <div class="col-lg-7"></div>
 
         <% if logged_in? %>
           <!-- ログインしている場合 -->
@@ -25,7 +25,7 @@
           <div class="navbar-brand js-scroll-trigger col-lg-1"><%= link_to 'ログイン', new_session_path %></div>
           <div class="navbar-brand js-scroll-trigger col-lg-1"><%= link_to '新規登録', new_user_path %></div>
         <% end %>
-
+        <div class="navbar-brand js-scroll-trigger col-lg-1"><%= link_to "問い合わせ", new_contact_path %> </div>
       </nav>
     </header>
 

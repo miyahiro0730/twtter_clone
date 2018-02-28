@@ -53,7 +53,7 @@
             <ul>
               <li>
                 <h3><%= list.content %></h4>
-                <p><i><%= list.created_at %></i></p>
+                <p><i><%= list.created_at %></i>  | <%= link_to '問い合わせ', new_contact_path(user_id: list.user_id), style: 'color:red' %></p>
 
 
                 <% if logged_in? %>

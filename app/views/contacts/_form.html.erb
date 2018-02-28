@@ -11,7 +11,6 @@
     </div>
   <% end %>
 
-
   <table style="border-spacing: 2px;">
     <tr>
       <td><%= form.label :name, "名前" %></td>
@@ -19,7 +18,7 @@
     </tr>
     <tr>
       <td><%= form.label :email, "メールアドレス" %></td>
-      <td><%= form.text_field :email, id: :contact_email %></td>
+      <td><%= form.text_field :email, id: :contact_email, value: @blog_user_email %></td>
     </tr>
     <tr>
       <td><%= form.label :content, "送信内容" %></td>

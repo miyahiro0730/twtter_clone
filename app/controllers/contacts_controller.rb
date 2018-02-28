@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :user_info, only: [:new]
 
   # GET /contacts
   # GET /contacts.json
@@ -72,4 +73,16 @@ class ContactsController < ApplicationController
     def contact_params
       params.require(:contact).permit(:name, :email, :content)
     end
+
+    # ユーザー情報取得
+    def user_info
+
+      user_id = params[:user_id]
+
+      if !user_id.nil?
+        # 該当ユーザーのID（該当ツイート選択時）
+        @blog_user_email = User.find(params[:user_id]).email
+      end
+    end
+
 end

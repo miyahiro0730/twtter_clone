@@ -40,8 +40,10 @@ class TweetsController < ApplicationController
 
     @tweet = Tweet.new(tweet_params)
 
-    @tweet.image.retrieve_from_cache! params[:cache][:image]
-    @tweet.save!
+    unless @tweet.image.url.nil?
+      @tweet.image.retrieve_from_cache! params[:cache][:image]
+      @tweet.save!
+    end
 
     if @tweet.save
       redirect_to tweets_path, notice: '新規のつぶやきが完了しました'

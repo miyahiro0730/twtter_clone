@@ -8,8 +8,11 @@
         <%= form.hidden_field :user_id, :value => current_user.id  %>
         <%= form.text_area :content, :class=>"form-control"  %>
         <!-- 確認画面から新規作成画面に戻った時に情報を保持するための記述 -->
-        <%= image_tag(@tweet.image.url) %>
-        <%= hidden_field_tag :"cache[image]",@tweet.image.cache_name %>
+
+        <% unless @tweet.image.url.nil? then %>
+          <%= image_tag(@tweet.image.url) %>
+          <%= hidden_field_tag :"cache[image]",@tweet.image.cache_name %>
+        <% end %>
         <br />
 
         <%= render 'error' %>

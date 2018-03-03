@@ -56,7 +56,9 @@
             <ul>
               <li>
                 <h3><%= list.content %></h4>
-                <p><%= image_tag list.image, :size =>"200" %></p>
+                <% unless list.image.url.nil? then %>
+                  <p><%= image_tag(list.image, :size =>"200") %></p>
+                <% end %>
                 <p><i><%= list.created_at %></i>  | <%= link_to '問い合わせ', new_contact_path(user_id: list.user_id), style: 'color:red' %></p>
 
 

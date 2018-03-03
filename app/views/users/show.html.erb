@@ -5,8 +5,9 @@
       <div class="intro-heading text-uppercase">ユーザー画面</div>
 
         <p><%= @user.name %>さんのページです</p>
-        <p><%= image_tag @user.image, :size =>"200" %></p>
-
+        <% unless @user.image.url.nil? then %>
+          <p><%= image_tag @user.image, :size =>"200" %></p>
+        <% end %>
         <p><%= link_to 'ログイン画面へ進む', new_session_path %></p>
 
         <p><%= link_to 'トップ画面へ進む', tweets_path %></p>
@@ -36,7 +37,10 @@
             <ul>
               <li>
                 <h3><%= f.tweet.content %></h4>
-                <p><%= image_tag f.tweet.image, :size =>"200" %></p>
+
+                <% unless f.tweet.image.url.nil? then %>
+                  <p><%= image_tag f.tweet.image, :size =>"200" %></p>
+                <% end %>
                 <p><i><%= f.tweet.created_at %></i></p>
 
                 <!-- 自分のIDの場合のみ表示する -->

@@ -40,7 +40,8 @@ class TweetsController < ApplicationController
 
     @tweet = Tweet.new(tweet_params)
 
-    unless @tweet.image.url.nil?
+    unless params[:cache].nil?
+      # 画像ファイル設定処理があるなら
       @tweet.image.retrieve_from_cache! params[:cache][:image]
       @tweet.save!
     end

@@ -9,13 +9,16 @@
 
         <div class="intro-heading text-uppercase">いまどうしてる？</div>
 
-
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
           <%= form_with(model: @tweet, local: true, url:confirm_tweets_path) do |form| %>
             <p><%= form.text_area :content, :class=>"form-control" %></p>
+            <p>
+              <%= form.file_field :image, id: :tweet_image %>
+              <!-- 確認画面から新規作成画面に戻った時に情報を保持するための記述 -->
+              <%= form.hidden_field :image_cache %>
+            </p>
             <p><%= form.submit :"つぶやく", :class=>"btn btn-primary" %></p>
-
             <%= form.hidden_field :user_id, :value => current_user.id %>
             <%= render 'error' %>
           <% end %>
@@ -53,6 +56,7 @@
             <ul>
               <li>
                 <h3><%= list.content %></h4>
+                <p><%= image_tag list.image, :size =>"200" %></p>
                 <p><i><%= list.created_at %></i>  | <%= link_to '問い合わせ', new_contact_path(user_id: list.user_id), style: 'color:red' %></p>
 
 

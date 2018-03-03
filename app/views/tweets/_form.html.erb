@@ -7,12 +7,14 @@
         <%= form.hidden_field :content %>
         <%= form.hidden_field :user_id, :value => current_user.id  %>
         <%= form.text_area :content, :class=>"form-control"  %>
+        <!-- 確認画面から新規作成画面に戻った時に情報を保持するための記述 -->
+        <%= image_tag(@tweet.image.url) %>
+        <%= hidden_field_tag :"cache[image]",@tweet.image.cache_name %>
         <br />
 
         <%= render 'error' %>
 
         <p><%= form.submit "つぶやく",:class=>"btn btn-primary" %></p>
-
       <% end %>
 
       <%= form_with(model:@tweet, url:tweets_path, local:true, method:'get') do |form| %>

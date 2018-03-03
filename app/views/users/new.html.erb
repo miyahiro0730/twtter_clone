@@ -22,6 +22,14 @@
             <td><%= f.label :password_confirmation %></td>
             <td><%= f.password_field :password_confirmation, :class=>"form-control" %></td>
           </tr>
+          <tr>
+            <td>プロフィール画像</td>
+            <td>
+              <%= f.file_field :image, id: :feed_image %>
+              <!-- 確認画面から新規作成画面に戻った時に情報を保持するための記述 -->
+              <%= f.hidden_field :image_cache %>
+            </td>
+          </tr>
         </table>
 
         <br />

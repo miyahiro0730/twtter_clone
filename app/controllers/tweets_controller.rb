@@ -40,6 +40,9 @@ class TweetsController < ApplicationController
 
     @tweet = Tweet.new(tweet_params)
 
+    @tweet.image.retrieve_from_cache! params[:cache][:image]
+    @tweet.save!
+
     if @tweet.save
       redirect_to tweets_path, notice: '新規のつぶやきが完了しました'
 
@@ -61,7 +64,7 @@ class TweetsController < ApplicationController
 private
   def tweet_params
     # raise
-    params.require(:tweet).permit(:content, :user_id)
+    params.require(:tweet).permit(:content, :user_id, :image)
   end
 
   def set_tweet

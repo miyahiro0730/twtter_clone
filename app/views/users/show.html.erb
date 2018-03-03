@@ -5,6 +5,7 @@
       <div class="intro-heading text-uppercase">ユーザー画面</div>
 
         <p><%= @user.name %>さんのページです</p>
+        <p><%= image_tag @user.image, :size =>"200" %></p>
 
         <p><%= link_to 'ログイン画面へ進む', new_session_path %></p>
 
@@ -35,6 +36,7 @@
             <ul>
               <li>
                 <h3><%= f.tweet.content %></h4>
+                <p><%= image_tag f.tweet.image, :size =>"200" %></p>
                 <p><i><%= f.tweet.created_at %></i></p>
 
                 <!-- 自分のIDの場合のみ表示する -->
